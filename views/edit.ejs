@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('./partials/head.ejs') %>
+    
+<body>
+
+     <!-- Header -->
+     <%- include('./partials/navbar.ejs') %>
+
+
+    <%= JSON.stringify(result) %>
+
+    <div class="form-container">
+        <h2>Edit Your Information</h2>
+        <form action="/edit" method="post" id="userForm">
+            <div class="form-group">
+                <input type="hidden" name="id" value="<%= result[0].id %>">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="<%= result[0].fullname %>" placeholder="Your name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="<%= result[0].email %>" placeholder="Your email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" value="<%= result[0].age %>" placeholder="Your age" required min="1">
+            </div>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <%- include('./partials/footer.ejs') %>
+
+</body>
+</html>

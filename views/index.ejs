@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+<body>
+
+    <!-- Header -->
+    <%- include('./partials/navbar.ejs') %>
+
+    <%= JSON.stringify(users)%>
+
+    <!-- User List Section -->
+    <section class="user-list">
+        <% users.forEach((val) => { %>
+        <div class="user-card">
+            <img src="/upload/<%= val.avarta %>" alt="User 1" class="user-image">
+            <h2 class="user-name"><%= val.name %></h2>
+            <p class="user-email"><%= val.email %></p>
+            <p><%= val.age %></p>
+            <a href="/edit/<%= val.id %>">Edit</a>
+            <a href="/delete/<%= val.id %>">Delete</a>
+        </div>
+        <% }) %>
+
+    </section>
+
+    <!-- Footer -->
+    <%- include('./partials/footer.ejs') %>
+
+</body>
+
+</html>
